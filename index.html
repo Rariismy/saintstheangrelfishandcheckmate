@@ -78,18 +78,27 @@
     background: #5a2a45; border-radius: 2px; transform: rotate(-45deg);
   }
 
-  /* ============ КЛИКАБЕЛЬНОЕ СОДЕРЖАНИЕ (на странице page-2) ============ */
-  .base a.link {
-    position: absolute; left: 12%; width: 76%; height: 8%;
-    border-radius: 8px; color: transparent; text-decoration: none; overflow: hidden;
-    transition: background .2s;
+  //* ============ КЛИКАБЕЛЬНОЕ СОДЕРЖАНИЕ (на странице page-2) ============ */
+  /* каждое название — отдельная картинка title-1.png … title-7.png, лежащая поверх страницы */
+  .base .link {
+    position: absolute; left: 12%; width: 76%; height: 8%;     /* рамка, в которую вписывается картинка */
+    display: flex; align-items: center; justify-content: center;
+    color: #5a2a45; font-size: min(3.6vw, 2.6vh); text-align: center; line-height: 1.1;  /* так выглядит текст, если картинки нет */
+    text-decoration: none;
   }
-  .base a.link:hover, .base a.link:focus-visible { background: var(--link-hover); outline: 2px dashed #e91e63; }
-  .l1 { top: 18%; }
-  .l2 { top: 30%; }
-  .l3 { top: 42%; }
-  .l4 { top: 54%; }
-  .l5 { top: 66%; }
+  .base .link img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; transition: transform .2s, filter .2s; }
+  .base a.link:hover img, .base a.link:focus-visible img { transform: scale(1.06); filter: drop-shadow(0 0 6px rgba(255,105,180,.9)); }
+  .base a.link:focus-visible { outline: 2px dashed #e91e63; border-radius: 8px; }
+
+  /* положение каждой зоны: top = отступ сверху в % от высоты страницы */
+  .l1 { top: 16%; }
+  .l2 { top: 27%; }
+  .l3 { top: 38%; }
+  .l4 { top: 49%; }
+  .l5 { top: 60%; }
+  .l6 { top: 71%; }
+  .l7 { top: 82%; }
+  .base .soon { cursor: default; }   /* «В разработке»: не ссылка, просто место под будущий раздел */
 
   /* ============ КНОПКИ ============ */
   .nav { display: flex; justify-content: center; gap: 12px; padding: 4px 12px calc(14px + env(safe-area-inset-bottom, 0px)); }
